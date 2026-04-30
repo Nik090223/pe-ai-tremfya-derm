@@ -1,0 +1,18 @@
+# Shared volume for the provenance ledger + qc_state.json.
+# Both the agent jobs and the dashboard pod mount this read-write
+# (dashboard reads only, but ReadWriteMany is required for multi-pod
+# concurrent mounting).
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pe-ai-runs
+  namespace: pe-ai-tremfya-derm
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  # storageClassName: must match an RWX-capable class on the J&J cluster
+  # (commonly "nfs-client" or similar). Leave commented to use cluster default.
+  # storageClassName: nfs-client

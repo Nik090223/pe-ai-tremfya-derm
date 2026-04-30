@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Provenance ledgers (keep only the sample)
+runs/*
+!runs/.gitkeep
+!runs/sample/
+
+# IDE
+# Track shared VS Code config (settings/launch/extensions) so the repo
+# is turnkey for collaborators. Ignore only personal/local overrides.
+.vscode/*.local.json
+.vscode/*.code-workspace
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker / k8s local
+*.tar
+kubeconfig

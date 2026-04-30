@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pe-ai-qc
+  namespace: pe-ai-tremfya-derm
+  labels:
+    app: pe-ai-qc
+    pe-ai/brand: tremfya
+    pe-ai/indication: derm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pe-ai-qc
+  template:
+    metadata:
+      labels:
+        app: pe-ai-qc
+    spec:
+      serviceAccountName: pe-ai-qc
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: dashboard
+          image: pe-ai-qc:0.1.0  # update tag in CI; placeholder for first push
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: pe-ai-qc-config
+          volumeMounts:
+            - name: runs
+              mountPath: /app/runs
+              readOnly: true
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: runs
+          persistentVolumeClaim:
+            claimName: pe-ai-runs

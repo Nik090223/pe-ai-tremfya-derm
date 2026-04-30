@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pe-ai-qc
+  namespace: pe-ai-tremfya-derm
+  annotations:
+    # Replace with the J&J cluster's ingress class.
+    kubernetes.io/ingress.class: "nginx"
+    # SSO -- delegate to whatever oauth2-proxy the platform team provides.
+    # Example for nginx-ingress + an oauth2-proxy in namespace `auth`:
+    # nginx.ingress.kubernetes.io/auth-url: "https://oauth2.example.com/oauth2/auth"
+    # nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.example.com/oauth2/start?rd=$scheme://$host$request_uri"
+    nginx.ingress.kubernetes.io/auth-url: "PLACEHOLDER_oauth2_auth_url"
+    nginx.ingress.kubernetes.io/auth-signin: "PLACEHOLDER_oauth2_signin_url"
+spec:
+  rules:
+    - host: pe-ai-tremfya-derm-qc.example.jnj   # replace per-cluster
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pe-ai-qc
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - pe-ai-tremfya-derm-qc.example.jnj
+      secretName: pe-ai-qc-tls   # provided by cert-manager

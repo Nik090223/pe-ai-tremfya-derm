@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PE.AI QC Dashboard - Tremfya Derm</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>PE.AI QC - Tremfya Derm</h1>
+    <p class="subtitle">read-only view of pipeline state &amp; alerts</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Alerts</h2>
+      <table id="alerts">
+        <thead><tr><th>ts</th><th>severity</th><th>actor</th><th>code</th><th>message</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Recent runs</h2>
+      <table id="runs">
+        <thead><tr><th>run_id</th><th>brand</th><th>env</th><th>last_actor</th><th>last_action</th><th>last_gate_status</th><th>last_ts</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

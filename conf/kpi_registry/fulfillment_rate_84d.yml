@@ -1,0 +1,15 @@
+kpi_id: fulfillment_rate_84d
+name: 84-day fulfillment rate
+version: 2026-04-01
+owner: ops-team@jnj.example
+formula: filled_within_84d / total_referrals
+source_tables:
+  - events_patient_journey_tremfya
+brands_applicable:
+  - tremfya
+benchmark:
+  min: 0.55
+  max: 0.78
+notes: >
+  Patient is "fulfilled" when a confirmed shipment occurs within 84 days
+  of the anchor referral event.

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pe-ai-qc-config
+  namespace: pe-ai-tremfya-derm
+data:
+  PE_AI_RUNS_DIR: "/app/runs"
+  PE_AI_BRAND: "tremfya"
+  PE_AI_INDICATION: "derm"

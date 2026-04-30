@@ -1,0 +1,12 @@
+# Trust mode controls how aggressively the approval gate fires.
+#
+#   LOW    -- gate every mutating tool call (read-only tools always silent)
+#   MEDIUM -- only gate prod-namespace mutations, MBOX delivery,
+#             model promotions, and conf/base/* edits
+#   HIGH   -- only gate the explicit risk=high list
+#
+# Default is LOW for both workstreams. Dial up only after the team has
+# established trust with the agents.
+
+ops: LOW
+dev: LOW

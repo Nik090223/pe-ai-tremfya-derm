@@ -1,0 +1,78 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Ops CLI: list agents",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "workspaces.ops.cli",
+      "args": ["--list"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Ops CLI: fulfillment_runner",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "workspaces.ops.cli",
+      "args": ["fulfillment_runner", "--env", "predev"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Ops CLI: persistency_runner",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "workspaces.ops.cli",
+      "args": ["persistency_runner", "--env", "predev"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Ops CLI: account_prioritizer",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "workspaces.ops.cli",
+      "args": ["account_prioritizer", "--env", "predev"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Ops CLI: qc_watcher",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "workspaces.ops.cli",
+      "args": ["qc_watcher", "--env", "predev"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Dev CLI: list agents",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "workspaces.dev.cli",
+      "args": ["--list"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "QC Dashboard: uvicorn",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["qc_dashboard.app.main:app", "--reload", "--port", "8000"],
+      "env": {"PE_AI_RUNS_DIR": "${workspaceFolder}/runs"},
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Pytest: current file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-v"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}

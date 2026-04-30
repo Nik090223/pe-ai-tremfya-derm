@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pe-ai-tremfya-derm
+  labels:
+    pe-ai/brand: tremfya
+    pe-ai/indication: derm

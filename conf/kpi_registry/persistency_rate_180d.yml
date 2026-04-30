@@ -1,0 +1,15 @@
+kpi_id: persistency_rate_180d
+name: 180-day persistency rate
+version: 2026-04-01
+owner: ops-team@jnj.example
+formula: persistent_at_180d / fulfilled_patients
+source_tables:
+  - events_patient_journey_tremfya
+brands_applicable:
+  - tremfya
+benchmark:
+  min: 0.62
+  max: 0.86
+notes: >
+  Patient is "persistent at 180d" when no discontinuation event occurs
+  in the 180 days following the first fulfillment.
